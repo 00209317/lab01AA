@@ -1,26 +1,36 @@
-#include <iostream> 
+// Example program
+#include <iostream>
 #include <array>
-
 using namespace std;
 
-#define SIZE 3
-
-int A[]= {1,2,3,1,2,3,1,2,3};
-int B[]= {1,2,3,1,2,3,1,2,3};
-
-
-int sumMatrixA(int mat[], int n){
-
-    return sumMatrixA(A,n-1)+sumMatrixA(B,n-1);
-
+void add( int a[3][3] , int b[3][3] , int c[3][3], int i, int j, int n)
+{
+    if(i<n)
+    {
+        if(j<n)
+        {
+            c[i][j]=a[i][j]+b[i][j];
+		    j++;
+		    add(a,b,c,i,j,n);
+        }
+         j=0;
+	     i++;
+	     add(a,b,c,i,j,n);
+    }
 }
 
 
-
-
-int main(){
-
+int main()
+{
+    int a[3][3]={{1,2,3},{1,2,3},{1,2,3}};
+    int b[3][3]={{1,2,3},{1,2,3},{1,2,3}};
+    int c[3][3];
     
-    cout<<sumMatrixA(A,9);
-    return 0;
+    add(a,b,c,0,0,3);
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            cout<< c[i][j]<<"\t";
+        }
+        cout<<'\n';
+    }    
 }
