@@ -3,7 +3,7 @@
 #include <array>
 using namespace std;
 
-void add( int a[3][3] , int b[3][3] , int c[3][3], int i, int j, int n)
+void sumaMatrix( int a[3][3] , int b[3][3] , int c[3][3], int i, int j, int n)
 {
     if(i<n)
     {
@@ -11,11 +11,11 @@ void add( int a[3][3] , int b[3][3] , int c[3][3], int i, int j, int n)
         {
             c[i][j]=a[i][j]+b[i][j];
 		    j++;
-		    add(a,b,c,i,j,n);
+		    sumaMatrix(a,b,c,i,j,n);
         }
          j=0;
 	     i++;
-	     add(a,b,c,i,j,n);
+	     sumaMatrix(a,b,c,i,j,n);
     }
 }
 
@@ -26,7 +26,7 @@ int main()
     int b[3][3]={{1,2,3},{1,2,3},{1,2,3}};
     int c[3][3];
     
-    add(a,b,c,0,0,3);
+    sumaMatrix(a,b,c,0,0,3);
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
             cout<< c[i][j]<<"\t";
